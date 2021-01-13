@@ -1,4 +1,4 @@
-from ubuntu:18.04 as system
+FROM ubuntu:18.04 AS system
 ENV OMP_THREAD_LIMIT=1
 ENV OMP_NUM_THREADS=1
 ENV LC_ALL=C.UTF-8
@@ -22,7 +22,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-from system as install
+FROM system AS install
 RUN wget "https://github.com/tesseract-ocr/tesseract/archive/4.1.1.tar.gz" && \
     gzip -d 4.1.1.tar.gz && \
     tar -xvf 4.1.1.tar && \
